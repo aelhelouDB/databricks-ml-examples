@@ -9,7 +9,7 @@
 # MAGIC
 # MAGIC Environment for this notebook:
 # MAGIC - Runtime: 14.0 GPU ML Runtime
-# MAGIC - Instance: `Standard_NC96ads_A100_v4` on Azure with 4 A100-80GB GPUs, `g5.24xlarge` on AWS with 4 A10-40GB GPUs
+# MAGIC - Instance: `Standard_NC96ads_A100_v4` on Azure with 4 A100-80GB GPUs, `g5.24xlarge` on AWS with 4 A10-24GB GPUs
 # MAGIC
 
 # COMMAND ----------
@@ -166,7 +166,7 @@ input_example=pd.DataFrame({
 with mlflow.start_run() as run:  
     mlflow.pyfunc.log_model(
         "model",
-        python_model=LlamaV2(),
+        python_model=Mistral7B(),
         artifacts={'repository' : "/dbfs/llm"},
         pip_requirements=[f"torch=={torch.__version__}", 
                           f"transformers=={transformers.__version__}", 
